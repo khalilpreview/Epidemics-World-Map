@@ -1,0 +1,54 @@
+<!-- Welcome to E-W-M Preview-lab team -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block styles %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('.static' , filename='css/bootstrap.css')}}">
+    <!-- mystyle CSS -->
+    <link rel="stylesheet" href="{{url_for('.static' , filename='css/ewmstyle.css')}}">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="{{url_for('.static' , filename='aos/dist/aos.css')}}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{url_for('.static' , filename='ewm-images/faviconewm.svg')}}" >
+    
+
+    {% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+    
+</head>
+
+
+<body>
+    
+    {% block content %}
+    
+    
+    {% endblock %}
+   
+    {% block scripts %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="{{url_for('.static' , filename='js/bootstrap.js')}}" ></script>
+    <script src="{{ url_for('static', filename='js/ewmscript.js')}}"></script>
+    <script src="{{ url_for('static', filename='aos/dist/aos.js')}}"></script>
+    <script type="text/javascript"> 
+		AOS.init({
+			easing: 'ease-in-out-sine'
+		})
+    </script>
+
+   {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+<!-- Welcome to E-W-M Preview-lab team -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block styles %}
+    {{super()}}
+    {% endblock %}
+    <title>{% block title %} {{title}} {% endblock %}</title>
+</head>
+
+
+<body>
+    {% block content %}
+   
+        
+
+    
+
+
+    <footer id="foooter">
+        <p align="center">© 2020 Preview-Lab.</p>
+    </footer>
+
+    {% endblock %}
+    <!-- content block ends -->
+
+
+
+    {% block scripts %}
+    
+    {{super()}}
+
+    {% endblock %}
+</body>
+
+</html>
