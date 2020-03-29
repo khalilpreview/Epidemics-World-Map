@@ -1,4 +1,4 @@
-aio-ping==0.0.0
+
 aioftp==0.11.1
 aiohttp==3.4.4
 apturl==0.5.2
