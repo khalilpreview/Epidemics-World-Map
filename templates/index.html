@@ -13,17 +13,46 @@
 
 <body data-aos="fade-up">
     {% block content %}
+    <!-- navbar -->
     <head>
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand mx-auto" href="#home">
               <img src="{{url_for('.static' , filename='ewm-images/virus.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-               Epidemics World Map | خريطة العالم للأوبئة
+               Epidemics World Map | خريطة العالم للأوبئة  
             </a>
           </nav>
     </head>
     
     <section id="home">
-        <div class="container">
+        <div class="container" align="center">
+            
+            <!-- coronavirus cases in the world-->
+            <div class="row">
+                
+                <div class="col-md">
+                    <h5 class="wordwide">World wide cases</h5>
+                </div>
+
+                <div class="col-md">
+                    <h5 class="wordwide-confirmed">Total confirmed: {{world_confirmed_cases}}</h5> 
+                </div>
+
+                <div class="col-md">
+                    <h5 class="wordwide-active">Total Active: {{world_confirmed_active}}</h5>
+                </div>
+                
+                <div class="col-md">
+                    <h5 class="wordwide-recoverd">Total Recovered: {{world_confirmed_recovers}}</h5>
+                </div>
+
+                <div class="col-md">
+                    <h5 class="wordwide-deaths">Total Deaths: {{world_confirmed_deaths}}</h5>
+                </div>
+
+
+            </div>
+
+            <!-- coronavirus / world-map -->
             <div class="row">
                 <!-- coronavirus definition-->
                 <div class="col-lg-3" data-aos="fade-right">
@@ -33,47 +62,97 @@
                     <p>يُعتقد أن الفيروس ينتشر بشكل رئيسي من شخص لآخر ممن هم على اتصال وثيق مع بعضهم البعض (في حدود 6 أقدام) ومن خلال قطرات الجهاز التنفسي التي تنتج عندما يسعل الشخص المصاب أو يعطس.
 
                         يمكن أن تهبط هذه القطيرات في أفواه أو أنوف الأشخاص القريبين أو الذين يمكن استنشاقهم في الرئتين.</p>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#VirusInfo">
+                        Get more Info | احصل على معلومات اكثر
+                    </button>
                 </div>
+
                 <!-- World map-->
-                <div class="col-lg-8" data-aos="fade-left">
+                <div class="col-lg-8">
                     <world-map class="map">
-                        <!--<world-map-location top="28%" left="47%" label="England" ></world-map-location>
-                        <world-map-location top="33%" left="48.5%" label="France"></world-map-location> -->
-                        <world-map-location top="40%" left="48%" label="Algeria" data-toggle="modal" data-target="#dzmap"></world-map-location>
+                        {% if country_name == "algeria"%}
+                            <world-map-location top="40%" left="48%" label="Algeria" data-toggle="modal" data-target="#country_map" ></world-map-location>
+                        {% endif %}
+                        {% if country_name == "italy"%}
+                            <world-map-location top="34%" left="50%" label="Italy" data-toggle="modal" data-target="#country_map" ></world-map-location>
+                        {% endif %}
+                        {% if country_name == "china"%}
+                            <world-map-location top="42%" left="75%" label="China" data-toggle="modal" data-target="#country_map" ></world-map-location>
+                        {% endif %}
                     </world-map>
                 </div>
 
             </div>
-            <div class="row">
-                <!-- coronavirus cases in the world-->
-                <div class="col-lg" data-aos="zoom-in">
-                    <h5 class="wordwide">World wide cases:</h5>
-                    <h3 class="wordwide">Total confirmed: 558,502</h3>
-                    <h3 class="wordwide">Total Deaths: 25,251</h3>
-                    <h3 class="wordwide"> Total Recovered: 127,615</h3>
-                </div>
 
-                <!-- coronavirus symptoms-->
-                <div class="col-lg-2" align="center" data-aos="zoom-in">
-                    <h5 class="information">Symptoms:</h5>
-                    <ul class="information">
-                        <li>Fever.</li>
-                        <li>Cough.</li>
-                        <li>Shortness of breath.</li>
-                    </ul>
-                    <h5 class="information-arabe">: الأعراض</h5>
-                    <ul class="information-arabe">
-                        <li>.حمى •</li>
-                        <li>.سعال •</li>
-                        <li>.ضيق في التنفس •</li>
-                    </ul>
-                    <img src="{{url_for('.static' , filename='ewm-images/contagious-illness.svg')}}" width="20%" >
-                    <img src="{{url_for('.static' , filename='ewm-images/contagious-illness(1).svg')}}" width="20%" >
-                    <img src="{{url_for('.static' , filename='ewm-images/infected-lungs.svg')}}" width="20%">
-                </div>
+        </div>
 
-                <!-- coronavirus steps to protect your self-->
-                <div class="col-lg" data-aos="zoom-in">
+    </section>
+
+        <!-- Modal where countries  mapping -->
+        <!-- Modal -->
+        <div class="modal fade" id="country_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> {{counrty_location}} (COVID-19)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body" align="center">
+                    <div class="row">
+
+                        <div class="col-4" >
+                            <img src="{{url_for('.static' , filename='ewm-images/confirmed.svg')}}" width="40%">
+                            <h5 class="hospitalized">Confirmed</h5>
+                            <h6 class="hospitalized">Confirmé</h6>
+                            <h6 class="hospitalized">تم تأكيد</h6>
+                            <h4 class="hospitalized">{{country_confirmed_cases}}</h4>
+                        </div>
+
+                        <div class="col-4">
+                            <img src="{{url_for('.static' , filename='ewm-images/recovered.svg')}}" width="40%">
+                            <h5 class="recovred">Recovered</h5>
+                            <h6 class="recovred">Rétablie</h6>
+                            <h6 class="recovred">حالات الشفاء</h6>
+                            <h4 class="recovred">{{country_confirmed_recovers}}</h4>
+                        </div>
+
+                        <div class="col-4" >
+                            <img src="{{url_for('.static' , filename='ewm-images/close.svg')}}" width="40%">
+                            <h5 class="deceased">Deceased</h5>
+                            <h6 class="deceased">Décédé</h6>
+                            <h6 class="deceased">حالات الوفاة</h6>
+                            <h4 class="deceased">{{country_confirmed_deaths}}</h4>
+                        </div>
+
+                    </div>
+                    <img src="{{url_for('.static' , filename='ewm-images/')}}{{country_name}}.svg" width="80%">
+                    <hr>
+                    <h6>Updated on {{country_date_of_update}}</h6>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal ends -->
+
+        <!--  Virus Information Modal   -->
+        <div class="modal fade" id="VirusInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">COVID-19</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+
                     <h5 class="payattention">Take steps to protect yourself:</h5>
                     <ul class="payattention">
                         <li>Wash your hands.</li>
@@ -94,52 +173,21 @@
                         <li>. ينتشر في مجتمعك COVID-19 ضع مسافة بينك وبين الأشخاص الآخرين إذا كان •</li>
                         <li>.قم بتغطية فمك وأنفك بمنديل عند السعال أو العطس أو استخدام الكوع من الداخل •</li>
                     </ul>
-                </div>
 
-            </div>            
-        </div>
+                    <h5 class="information">Symptoms:</h5>
+                    <ul class="information">
+                        <li>Fever.</li>
+                        <li>Cough.</li>
+                        <li>Shortness of breath.</li>
+                    </ul>
+                    <h5 class="information-arabe">: الأعراض</h5>
+                    <ul class="information-arabe">
+                        <li>.حمى •</li>
+                        <li>.سعال •</li>
+                        <li>.ضيق في التنفس •</li>
+                    </ul>
+                    
 
-  
-    </section>
-
-        <!-- Modal  algeria map-->
-        <!-- Modal -->
-        <div class="modal fade" id="dzmap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Algeria (COVID-19)</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="{{url_for('.static' , filename='ewm-images/recovered.svg')}}" width="40%">
-                            <h5 class="recovred">Recovered</h5>
-                            <h6 class="recovred">حالات الشفاء</h6>
-                            <h4 class="recovred">29</h4>
-                        </div>
-
-                        <div class="col-4" >
-                            <img src="{{url_for('.static' , filename='ewm-images/patient.svg')}}" width="40%">
-                            <h5 class="hospitalized">Hospitalized</h5>
-                            <h6 class="hospitalized">في المستشفى</h6>
-                            <h4 class="hospitalized">313</h4>
-                        </div>
-
-                        <div class="col-4" >
-                            <img src="{{url_for('.static' , filename='ewm-images/close.svg')}}" width="40%">
-                            <h5 class="deceased">Deceased</h5>
-                            <h6 class="deceased">حالات الوفاة</h6>
-                            <h4 class="deceased">25</h4>
-                        </div>
-
-                    </div>
-                    <h6>Confirmed cases: 367</h6>
-                    <h6>Date of reporting : 27/03/2020</h6>
-                    <img src="{{url_for('.static' , filename='ewm-images/dz.svg')}}" width="80%">
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

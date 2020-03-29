@@ -187,7 +187,7 @@ class WorldMapLocation extends HTMLElement {
   
   stopAnimation(element) {
     element.classList.remove('anim');
-    element.style.animationDelay = '2s';
+    element.style.animationDelay = '1.2s';
   }
 
   startAnimation(element) {

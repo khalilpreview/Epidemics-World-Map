@@ -37,9 +37,19 @@ world-map {
     max-width: 100vw;
 }
 
+#home .row {
+    text-align: center;
+}
+
+.col-md {
+    text-align: center;
+    margin-left: 50px;
+    max-width: 75%;
+}
+
 /*column of définition*/
 .col-lg-3 {
-    color: #747d8c;
+    color: #f1f2f6;
     text-align: left;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -47,13 +57,12 @@ world-map {
 .col-lg-3 h1 {
     font-size: 50px;
     font-weight: 800;
-    text-shadow: 2px 2px 2px #b2bec3;
+    text-shadow: 1px 1px 0.5px;
 }
 
 .col-lg-3 p {
     font-size: 18px;
-    font-weight: 300;
-    text-shadow: 1px 1px ;
+    font-weight: 400;
 }
 /*column of worldmap*/
 .col-lg-8 {
@@ -70,35 +79,69 @@ world-map {
     bottom:0;
 }
 
-#home .information {
+.information {
     text-align: left;
     color:#0984e3;
 }
 
-#home .information-arabe {
+.information-arabe {
     text-align:right !important;
     color:#0984e3;
 }
 
-#home .information-arabe li {
+.information-arabe li {
     list-style:none;
 }
 
-#home .payattention {
-    color:#e17055
+.payattention {
+    color:#ff6348;
 }
 
-#home .payattention-arabe {
+.payattention-arabe {
     text-align:right !important;
-    color:#e17055
+    color:#ff6348;
 }
-#home .payattention-arabe li{
+.payattention-arabe li{
     list-style:none;
 }
 
 #home .wordwide {
+    font-size: 25px;
+    font-weight: 800;
+    display: inline;
+    padding: 20px;
+    color:white;
+}
+#home .wordwide-confirmed {
+    font-size: 20px;
+    font-weight: 800;
+    display: inline;
+    padding: 20px;
     color:#55efc4;
 }
+#home .wordwide-recoverd {
+    font-size: 20px;
+    font-weight: 800;
+    display: inline;
+    padding: 20px;
+    color:#2ed573;
+}
+#home .wordwide-deaths {
+    font-size: 20px;
+    font-weight: 800;
+    display: inline;
+    padding: 20px;
+    color:#ff6348;
+}
+
+#home .wordwide-active {
+    font-size: 20px;
+    font-weight: 800;
+    display: inline;
+    padding: 20px;
+    color:#7bed9f;
+}
+
 
 
 /*========stylling for modale cases====*/
@@ -120,7 +163,7 @@ world-map {
 
 /*========== stylling for modal =========*/
 .modal-content {
-    background-color: #747d8c;
+    background-color: #2f3542;
     color: white;
 }
 
