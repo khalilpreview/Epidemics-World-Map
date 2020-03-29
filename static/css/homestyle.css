@@ -1,0 +1,29 @@
+body {
+    margin: 10px;
+    background-color:#2f3542;
+}
+
+#myhome {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    text-align: center;
+}
+/*section home container style*/
+#myhome .container  {
+    width: 100%;
+    max-width: 100vw;
+}
+
+#myhome .centerhome {
+    text-align: center;
+    color: white;
+    padding-top: 150px;
+}
+
+#myhome .hometitle {
+    text-decoration: 1px 2px #0984e3;
+    text-align: center;
+    color: white;
+    padding-top: 25px;
+}

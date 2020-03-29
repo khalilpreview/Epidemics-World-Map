@@ -6,6 +6,7 @@
 <head>
     {% block styles %}
     {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static' , filename='css/ewmstyle.css')}}">
     {% endblock %}
     <title>{% block title %} {{title}} {% endblock %}</title>
 </head>
