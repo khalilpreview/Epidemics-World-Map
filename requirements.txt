@@ -26,7 +26,7 @@ defer==1.0.6
 distro-info===0.18ubuntu0.18.04.1
 dj-database-url==0.4.2
 Django==2.2.4
-djangorestframework==3.7.3
+djangorestframework==3.9.1
 djason==0.2.1
 dnspython==1.15.0
 dnspython3==1.15.0
