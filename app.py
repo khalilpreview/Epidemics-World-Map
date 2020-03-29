@@ -71,3 +71,9 @@ def registeration_page():
 def dashboard_page():
     title = 'Dashboard E-W-M'
     return render_template('dashboard.html' , title=title)
+
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
