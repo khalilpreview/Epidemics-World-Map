@@ -104,7 +104,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.7
 pycairo==1.16.2
 pycrypto==2.6.1
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 pycups==1.9.73
 pygame==1.9.3
 Pygments==2.2.0
