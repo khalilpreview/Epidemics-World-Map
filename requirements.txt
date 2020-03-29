@@ -25,7 +25,7 @@ decorator==4.1.2
 defer==1.0.6
 distro-info===0.18ubuntu0.18.04.1
 dj-database-url==0.4.2
-Django==2.2.4
+Django==2.2.10
 djangorestframework==3.7.3
 djason==0.2.1
 dnspython==1.15.0
