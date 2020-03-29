@@ -7,7 +7,7 @@
     {% block styles %}
     {{super()}}
     {% endblock %}
-    <title>{% block title %} {{title}} {% endblock %}</title>
+    <title>{% block title %} {{title}} | {{counrty_location}} {% endblock %}</title>
 </head>
 
 
@@ -18,9 +18,11 @@
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand mx-auto" href="#home">
               <img src="{{url_for('.static' , filename='ewm-images/virus.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-               Epidemics World Map | خريطة العالم للأوبئة  
+               E-W-M 
             </a>
-          </nav>
+        </nav>
+
+       
     </head>
     
     <section id="home">

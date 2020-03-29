@@ -11,6 +11,16 @@ translator = Translator()
 # routes and views start here.
 # ...
 # home the index route and view
+# registration  route and view
+
+@app.route('/')
+def gen_home_page():
+    title = 'Welcome to E-W-M'
+    return render_template('home.html' , title=title)
+
+
+
+
 @app.route('/<country_name>', methods=['GET' , 'POST'])
 def home_page(country_name):
     title = 'E-W-M'
@@ -52,6 +62,7 @@ def home_page(country_name):
                                           country_name = country_name ,
                                           translator = translator ,
                                           title=title)
+
 
 
 # registration  route and view

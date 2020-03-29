@@ -94,7 +94,7 @@ class WorldMapLocation extends HTMLElement {
       }
       .title.anim {
         -webkit-animation-duration: 1.25s;
-        animation-duration: 1.25s;
+        animation-duration: 5.25s;
         -webkit-animation-fill-mode: backwards;
         animation-fill-mode: backwards;
         -webkit-animation-name: title;
@@ -187,7 +187,7 @@ class WorldMapLocation extends HTMLElement {
   
   stopAnimation(element) {
     element.classList.remove('anim');
-    element.style.animationDelay = '1.2s';
+    element.style.animationDelay = '0.5s';
   }
 
   startAnimation(element) {
