@@ -124,7 +124,7 @@ python-debian==0.1.32
 python-jwt==2.0.1
 pyttsx3==2.7
 pytz==2019.2
-pyxdg==0.25
+pyxdg==0.26
 PyYAML==5.3
 pyzbar==0.1.7
 pyzmq==17.0.0
