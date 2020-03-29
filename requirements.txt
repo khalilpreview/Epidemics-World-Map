@@ -19,7 +19,7 @@ clickclick==1.2.2
 command-not-found==0.3
 configparser==3.5.0
 connexion==2.6.0
-cryptography==2.1.4
+cryptography==2.3
 cupshelpers==1.0
 decorator==4.1.2
 defer==1.0.6
