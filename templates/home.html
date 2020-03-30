@@ -26,6 +26,15 @@
         <div class="container centerhome">
             <img src="{{url_for('.static' , filename='ewm-images/virus.svg')}}" width="200" height="200" class="d-inline-block align-top" alt="">
             <h1 class="hometitle">Epedimics World Map</h1>
+            <h4 class="hometitle">The E-W-M website is an initiative by <a href="https://khalilpreview.github.io/previewlab">Preview-Lab</a>.</h4>
+            <h5>The first start with (COVID-19) cases in the world.</h5>
+            <h6>With daily updates.</h6>
+            <form method="POST" action="/">
+                {{ form.hidden_tag() }}
+                {{ form.select_country(class="selectmenu") }}
+                {{ form.submit(class_="btn btn-outline-success") }}
+            </form>
+            
         </div>
     </section>
 

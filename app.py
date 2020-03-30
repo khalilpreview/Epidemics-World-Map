@@ -1,22 +1,32 @@
 import requests
 import json
-from googletrans import Translator
+#from googletrans import Translator
 from flask import Flask , render_template , redirect , url_for , request
+from forms import *
+
 
 # Flask app initialisation
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'V7lyCbdHp1lKc24QbEhMexbnUsKHNxYi'
 # create an object of translater class
-translator = Translator()
+# google translator integrated
+#translator = Translator()
 
 # routes and views start here.
 # ...
 # home the index route and view
 # registration  route and view
 
-@app.route('/')
+@app.route('/' , methods=['GET','POST'])
 def gen_home_page():
     title = 'Welcome to E-W-M'
-    return render_template('home.html' , title=title)
+    form = SelectCountryForm()
+
+    if form.validate_on_submit():
+        country = '/' + form.select_country.data 
+        return redirect(country)
+
+    return render_template('home.html' , form=form ,title=title)
 
 
 
@@ -60,7 +70,6 @@ def home_page(country_name):
                                           counrty_location = counrty_location ,
                                           country_date_of_update = country_date_of_update ,
                                           country_name = country_name ,
-                                          translator = translator ,
                                           title=title)
 
 

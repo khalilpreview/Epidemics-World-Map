@@ -27,3 +27,12 @@ body {
     color: white;
     padding-top: 25px;
 }
+.selectmenu {
+    color: white;
+    border: 1px solid #28a745;
+    width: 180px;
+    height: 42px;
+    border-radius: 5px;
+    overflow: hidden;
+    background:transparent;
+}
