@@ -1,2 +1,4 @@
 # Epidemics-World-Map
-Epidemics World Map EWM
+(EWM)  Epidemics World Map that visualize data for every cases in the world.
+Give it a try : https://epedimicworldmap.herokuapp.com/
+
