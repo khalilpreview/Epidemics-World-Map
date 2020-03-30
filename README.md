@@ -4,3 +4,6 @@ Give it a try : https://epedimicworldmap.herokuapp.com/
 
 ![Home screenshot](https://github.com/khalilpreview/Epidemics-World-Map/blob/master/static/ewm-images/ewm-home.png)
 
+
+API used: https://covid2019-api.herokuapp.com/
+
