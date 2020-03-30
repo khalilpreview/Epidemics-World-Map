@@ -74,15 +74,8 @@
                 <!-- World map-->
                 <div class="col-lg-8">
                     <world-map class="map">
-                        {% if country_name == "algeria"%}
-                            <world-map-location top="40%" left="48%" label="Algeria" data-toggle="modal" data-target="#country_map" ></world-map-location>
-                        {% endif %}
-                        {% if country_name == "italy"%}
-                            <world-map-location top="34%" left="50%" label="Italy" data-toggle="modal" data-target="#country_map" ></world-map-location>
-                        {% endif %}
-                        {% if country_name == "china"%}
-                            <world-map-location top="42%" left="75%" label="China" data-toggle="modal" data-target="#country_map" ></world-map-location>
-                        {% endif %}
+                        <world-map-location top="{{cordinate[0]}}%" left="{{cordinate[1]}}%" label="{{country_info.country_label_name}}" data-toggle="modal" data-target="#country_map" >
+                        </world-map-location>   
                     </world-map>
                 </div>
 
@@ -131,7 +124,7 @@
                         </div>
 
                     </div>
-                    <img src="{{url_for('.static' , filename='ewm-images/')}}{{country_name}}.svg" width="80%">
+                    <img src="{{url_for('.static' , filename='ewm-images/country-img/')}}{{country_name}}.svg" width="80%">
                     <hr>
                     <h6>Updated on {{country_date_of_update}}</h6>
                 </div>

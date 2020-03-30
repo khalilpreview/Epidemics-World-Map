@@ -2,21 +2,29 @@ import requests
 import json
 #from googletrans import Translator
 from flask import Flask , render_template , redirect , url_for , request
+from flask_sqlalchemy import SQLAlchemy
 from forms import *
+
 
 
 # Flask app initialisation
 app = Flask(__name__)
+db = SQLAlchemy(app)
+
+from models import *
+
+# App configuration
 app.config['SECRET_KEY'] = 'V7lyCbdHp1lKc24QbEhMexbnUsKHNxYi'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
 # create an object of translater class
 # google translator integrated
 #translator = Translator()
 
 # routes and views start here.
 # ...
-# home the index route and view
-# registration  route and view
 
+# home  route and view
 @app.route('/' , methods=['GET','POST'])
 def gen_home_page():
     title = 'Welcome to E-W-M'
@@ -30,10 +38,13 @@ def gen_home_page():
 
 
 
-
+# the home of map
 @app.route('/<country_name>', methods=['GET' , 'POST'])
 def home_page(country_name):
     title = 'E-W-M'
+    country_info = CountriesBase.query.filter_by(country_names = country_name ).first()
+    co = country_info.country_map_cordinate
+    cordinate = co.split()
 
     url_world = 'https://covid2019-api.herokuapp.com/v2/total'
     url_country = 'https://covid2019-api.herokuapp.com/v2/country/' + country_name
@@ -53,12 +64,7 @@ def home_page(country_name):
     country_confirmed_recovers = country['recovered']
     country_date_of_update = country_data.json()['dt']
     
-
     
-
-    
-    print(world)
-    print(country)
 
     return render_template('index.html' , world_confirmed_cases = world_confirmed_cases ,
                                           world_confirmed_deaths = world_confirmed_deaths ,  
@@ -70,6 +76,8 @@ def home_page(country_name):
                                           counrty_location = counrty_location ,
                                           country_date_of_update = country_date_of_update ,
                                           country_name = country_name ,
+                                          country_info = country_info ,
+                                          cordinate = cordinate ,
                                           title=title)
 
 
