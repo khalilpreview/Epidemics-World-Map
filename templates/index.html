@@ -16,9 +16,9 @@
     <!-- navbar -->
     <head>
         <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand mx-auto" href="#home">
+            <a class="navbar-brand mx-auto" href="/">
               <img src="{{url_for('.static' , filename='ewm-images/virus.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-               E-W-M 
+               E-W-M (COVID-19)
             </a>
         </nav>
 
@@ -32,21 +32,22 @@
             <div class="row">
                 
                 <div class="col-md">
-                    <h5 class="wordwide">World wide cases</h5>
+                    <h5 class="wordwide">Infected Countries: {{infected_country_number}}</h5>
                 </div>
-
+                <hr>
                 <div class="col-md">
                     <h5 class="wordwide-confirmed">Total confirmed: {{world_confirmed_cases}}</h5> 
                 </div>
-
+                <hr>
                 <div class="col-md">
                     <h5 class="wordwide-active">Total Active: {{world_confirmed_active}}</h5>
                 </div>
-                
+                <hr>
                 <div class="col-md">
                     <h5 class="wordwide-recoverd">Total Recovered: {{world_confirmed_recovers}}</h5>
                 </div>
-
+                <hr>
+                
                 <div class="col-md">
                     <h5 class="wordwide-deaths">Total Deaths: {{world_confirmed_deaths}}</h5>
                 </div>
@@ -54,33 +55,60 @@
 
             </div>
 
-            <!-- coronavirus / world-map -->
-            <div class="row">
-                <!-- coronavirus definition-->
-                <div class="col-lg-3" data-aos="fade-right">
-                    <h1> COVID-19 <img src="{{url_for('.static' , filename='ewm-images/external-content.duckduckgo.com.png')}}" width="100px"></h1>
-                    <p>The virus is thought to spread mainly from person-to-person who are in close contact with one another (within about 6 feet) and through respiratory droplets produced when an infected person coughs or sneezes.
-                        These droplets can land in the mouths or noses of people who are nearby or possibly be inhaled into the lungs.</p>
-                    <p>يُعتقد أن الفيروس ينتشر بشكل رئيسي من شخص لآخر ممن هم على اتصال وثيق مع بعضهم البعض (في حدود 6 أقدام) ومن خلال قطرات الجهاز التنفسي التي تنتج عندما يسعل الشخص المصاب أو يعطس.
+            <hr>
 
-                        يمكن أن تهبط هذه القطيرات في أفواه أو أنوف الأشخاص القريبين أو الذين يمكن استنشاقهم في الرئتين.</p>
+            <!-- The world map -->
+            <world-map class="map">
+                <world-map-location top="{{cordinate[0]}}%" left="{{cordinate[1]}}%" label="{{country_info.country_label_name}}" data-toggle="modal" data-target="#country_map" >
+                </world-map-location>   
+                <!--
+                <world-map-location top="%" left="%" label="" data-toggle="modal" data-target="#country_map" >
+                </world-map-location> 
+                -->
+            </world-map>
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#VirusInfo">
-                        Get more Info | احصل على معلومات اكثر
-                    </button>
+            <h5>(Click on your county to see more... | انقر على مقاطعتك لرؤية المزيد)</h5>
+
+            <hr>
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-3" >
+                        <img src="{{url_for('.static' , filename='ewm-images/confirmed.svg')}}" width="50px">
+                        <hr>
+                        <h6 class="hospitalized">Confirmed</h6>
+                        <h6 class="hospitalized">تم تأكيد</h6>
+                        <h4 class="hospitalized">{{country_confirmed_cases}}</h4>
+                    </div>
+
+                    <div class="col-3" >
+                        <img src="{{url_for('.static' , filename='ewm-images/active.svg')}}" width="50px">
+                        <hr>
+                        <h6 class="active">Active</h6>
+                        <h6 class="active">نشطة</h6>
+                        <h4 class="active">{{country_confirmed_active}}</h4>
+                    </div>
+
+                    <div class="col-3">
+                        <img src="{{url_for('.static' , filename='ewm-images/recovered.svg')}}" width="50px">
+                        <hr>
+                        <h6 class="recovred">Recovered</h5>
+                        <h6 class="recovred"> الشفاء</h6>
+                        <h4 class="recovred">{{country_confirmed_recovers}}</h4>
+                    </div>
+
+                    <div class="col-3" >
+                        <img src="{{url_for('.static' , filename='ewm-images/deaths.svg')}}" width="50px">
+                        <hr>
+                        <h6 class="deceased">Deceased</h5>   
+                        <h6 class="deceased"> الوفاة</h6>
+                        <h4 class="deceased">{{country_confirmed_deaths}}</h4>
+                    </div>
+
                 </div>
-
-                <!-- World map-->
-                <div class="col-lg-8">
-                    <world-map class="map">
-                        <world-map-location top="{{cordinate[0]}}%" left="{{cordinate[1]}}%" label="{{country_info.country_label_name}}" data-toggle="modal" data-target="#country_map" >
-                        </world-map-location>   
-                    </world-map>
-                </div>
-
             </div>
-
+            
         </div>
 
     </section>
@@ -97,34 +125,34 @@
                 </button>
                 </div>
                 <div class="modal-body" align="center">
+
+                    
+                    
+                    
                     <div class="row">
 
-                        <div class="col-4" >
-                            <img src="{{url_for('.static' , filename='ewm-images/confirmed.svg')}}" width="40%">
-                            <h5 class="hospitalized">Confirmed</h5>
-                            <h6 class="hospitalized">Confirmé</h6>
-                            <h6 class="hospitalized">تم تأكيد</h6>
-                            <h4 class="hospitalized">{{country_confirmed_cases}}</h4>
+                        <div class="col-3" >
+                            
                         </div>
 
-                        <div class="col-4">
-                            <img src="{{url_for('.static' , filename='ewm-images/recovered.svg')}}" width="40%">
-                            <h5 class="recovred">Recovered</h5>
-                            <h6 class="recovred">Rétablie</h6>
-                            <h6 class="recovred">حالات الشفاء</h6>
-                            <h4 class="recovred">{{country_confirmed_recovers}}</h4>
+                        <div class="col-3" >
+                            
                         </div>
 
-                        <div class="col-4" >
-                            <img src="{{url_for('.static' , filename='ewm-images/close.svg')}}" width="40%">
-                            <h5 class="deceased">Deceased</h5>
-                            <h6 class="deceased">Décédé</h6>
-                            <h6 class="deceased">حالات الوفاة</h6>
-                            <h4 class="deceased">{{country_confirmed_deaths}}</h4>
+                        <div class="col-3" >
+                            
                         </div>
 
                     </div>
-                    <img src="{{url_for('.static' , filename='ewm-images/country-img/')}}{{country_name}}.svg" width="80%">
+                    
+                    <img src="{{url_for('.static' , filename='ewm-images/country-img/')}}{{country_name}}.svg" width="60%">
+                    <hr>
+                    <h5>For more information :</h5>
+                    <h6><a href="https://www.who.int/">World Health Organization | منظمة الصحة العالمية</a></h6>
+                    <h6><a href="https://www.who.int/">Ministry of Health | وزارة الصحة</a></h6>
+                    <h6><a href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd">Worldwide Coverage Map (WHO)</a></h6>
+                    <h6><a href="https://fr.wikipedia.org/wiki/Coronavirus">Coronavirus wiki</a></h6>
+                    <h5><a href="tel:{{country_info.country_green_number}}">Call</a> ({{country_info.country_green_number}} <img src="{{url_for('.static' , filename='ewm-images/call.svg')}}" width="25px">)</h5>
                     <hr>
                     <h6>Updated on {{country_date_of_update}}</h6>
                 </div>
@@ -135,72 +163,6 @@
             </div>
         </div>
         <!-- Modal ends -->
-
-        <!--  Virus Information Modal   -->
-        <div class="modal fade" id="VirusInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">COVID-19</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-
-                    <h5 class="payattention">Take steps to protect yourself:</h5>
-                    <ul class="payattention">
-                        <li>Wash your hands.</li>
-                        <li>Use a hand sanitizer that contains at least 60% alcohol.</li>
-                        <li>Avoid touching your eyes, nose, and mouth with unwashed hands.</li>
-                        <li>Avoid close contact.</li>
-                        <li>Stay home if you are sick.</li>
-                        <li>Put distance between yourself and other people if COVID-19 is spreading in your community.</li>
-                        <li>Cover your mouth and nose with a tissue when you cough or sneeze or use the inside of your elbow.</li>
-                    </ul>
-                    <h5 class="payattention-arabe">: اتخذ خطوات لحماية نفسك</h5>
-                    <ul class="payattention-arabe">
-                        <li>.اغسل يديك</li>
-                        <li>.استخدم معقم لليدين يحتوي على 60٪ كحول على الأقل •</li>
-                        <li>.تجنب لمس عينيك وأنفك وفمك بأيدٍ غير مغسولة •</li>
-                        <li>.تجنب الاتصال الوثيق •</li>
-                        <li>.ابقى قي المنزل إذا كنت مريضا •</li>
-                        <li>. ينتشر في مجتمعك COVID-19 ضع مسافة بينك وبين الأشخاص الآخرين إذا كان •</li>
-                        <li>.قم بتغطية فمك وأنفك بمنديل عند السعال أو العطس أو استخدام الكوع من الداخل •</li>
-                    </ul>
-
-                    <h5 class="information">Symptoms:</h5>
-                    <ul class="information">
-                        <li>Fever.</li>
-                        <li>Cough.</li>
-                        <li>Shortness of breath.</li>
-                    </ul>
-                    <h5 class="information">Complications:</h5>
-                    <ul class="information">
-                        <li>Pneumonia.</li>
-                        <li>Acute respiratory distress syndrome (ARDS).</li>
-                        <li>Kidney failure.</li>
-                    </ul>
-                    <h5 class="information-arabe">: الأعراض</h5>
-                    <ul class="information-arabe">
-                        <li>.حمى •</li>
-                        <li>.سعال •</li>
-                        <li>.ضيق في التنفس •</li>
-                    </ul>
-                    
-
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-            </div>
-        </div>
-        <!-- Modal ends -->
-
-        
-
-    
 
 
     <footer id="foooter">

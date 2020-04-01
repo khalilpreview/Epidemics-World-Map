@@ -94,12 +94,12 @@ class WorldMapLocation extends HTMLElement {
       }
       .title.anim {
         -webkit-animation-duration: 1.25s;
-        animation-duration: 5.25s;
+        animation-duration: 10.25s;
         -webkit-animation-fill-mode: backwards;
         animation-fill-mode: backwards;
         -webkit-animation-name: title;
         animation-name: title;
-        -webkit-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: linear;
         animation-timing-function: linear;
       }
 

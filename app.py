@@ -30,6 +30,16 @@ def gen_home_page():
     title = 'Welcome to E-W-M'
     form = SelectCountryForm()
 
+    url_country_that_infected = 'https://covid2019-api.herokuapp.com/countries'
+
+    inf_country = requests.get(url_country_that_infected)
+    infected_country = inf_country.json()['countries']
+    infected_country_number = len(infected_country)
+
+    
+    
+
+    # get the link + country nameafter submited
     if form.validate_on_submit():
         country = '/' + form.select_country.data 
         return redirect(country)
@@ -48,6 +58,8 @@ def home_page(country_name):
 
     url_world = 'https://covid2019-api.herokuapp.com/v2/total'
     url_country = 'https://covid2019-api.herokuapp.com/v2/country/' + country_name
+    url_country_that_infected = 'https://covid2019-api.herokuapp.com/countries'
+
 
     world_data = requests.get(url_world)
     world = world_data.json()['data']
@@ -62,8 +74,14 @@ def home_page(country_name):
     country_confirmed_cases = country['confirmed']
     country_confirmed_deaths = country['deaths']
     country_confirmed_recovers = country['recovered']
+    country_confirmed_active = country['active'] 
     country_date_of_update = country_data.json()['dt']
     
+    inf_country = requests.get(url_country_that_infected)
+    infected_country = inf_country.json()['countries']
+    infected_country_number = len(infected_country)
+
+   
     
 
     return render_template('index.html' , world_confirmed_cases = world_confirmed_cases ,
@@ -71,8 +89,10 @@ def home_page(country_name):
                                           world_confirmed_recovers = world_confirmed_recovers ,
                                           world_confirmed_active =world_confirmed_active ,
                                           country_confirmed_cases =  country_confirmed_cases ,
+                                          country_confirmed_active = country_confirmed_active ,
                                           country_confirmed_deaths = country_confirmed_deaths ,
                                           country_confirmed_recovers = country_confirmed_recovers ,
+                                          infected_country_number = infected_country_number ,
                                           counrty_location = counrty_location ,
                                           country_date_of_update = country_date_of_update ,
                                           country_name = country_name ,

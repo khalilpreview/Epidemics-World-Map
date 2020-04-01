@@ -12,12 +12,14 @@ world-map {
     position: relative;
     max-width: 1000px;
     margin: auto;
+    margin-top: 50px;
 }
 
 /*svg style*/
 .svg {
     width: 100% !important;
     height: auto;
+    
 }
 
 /*world map background*/
@@ -42,28 +44,28 @@ world-map {
 }
 
 #home .wordwide {
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 800;
     display: inline;
     padding: 20px;
     color:white;
 }
 #home .wordwide-confirmed {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 800;
     display: inline;
     padding: 20px;
     color:#55efc4;
 }
 #home .wordwide-recoverd {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 800;
     display: inline;
     padding: 20px;
     color:#2ed573;
 }
 #home .wordwide-deaths {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 800;
     display: inline;
     padding: 20px;
@@ -71,7 +73,7 @@ world-map {
 }
 
 #home .wordwide-active {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 800;
     display: inline;
     padding: 20px;
@@ -80,28 +82,31 @@ world-map {
 
 
 .col-md {
+    vertical-align: middle;
     text-align: center;
-    margin-left: 50px;
-    max-width: 75%;
+    margin: 0px ;
+    max-width: 100%;
 }
 
 /*column of définition*/
-.col-lg-3 {
+.virusdetails {
     color: #f1f2f6;
-    text-align: left;
+    text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.col-lg-3 h1 {
+.virusdetails h1 {
     font-size: 50px;
     font-weight: 800;
     text-shadow: 1px 1px 0.5px;
 }
 
-.col-lg-3 p {
+.virusdetails p {
     font-size: 18px;
     font-weight: 400;
 }
+
+
 /*column of worldmap*/
 .col-lg-8 {
     padding-top: 100px;
@@ -117,47 +122,27 @@ world-map {
     bottom:0;
 }
 
-.information {
-    text-align: left;
-    color:#0984e3;
-}
-
-.information-arabe {
-    text-align:right !important;
-    color:#0984e3;
-}
-
-.information-arabe li {
-    list-style:none;
-}
-
-.payattention {
-    color:#ff6348;
-}
-
-.payattention-arabe {
-    text-align:right !important;
-    color:#ff6348;
-}
-.payattention-arabe li{
-    list-style:none;
-}
 
 
 
 /*========stylling for modale cases====*/
 .recovred {
-    color: #00b894;
+    color: #2ed573;
+    font-weight: 800 !important;
+}
+
+.active {
+    color: #7bed9f;
     font-weight: 800 !important;
 }
 
 .hospitalized {
-    color: #fdcb6e;
+    color: #55efc4;
     font-weight: 800 !important;
 }
 
 .deceased {
-    color: #d63031;
+    color: #ff6348;
     font-weight: 800 !important;
 }
 /*=================================*/
