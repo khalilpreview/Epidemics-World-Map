@@ -117,8 +117,37 @@
             <!-- Modal ends -->
             
         </div>
-    </section>
 
+        <button type="button" class="floating-btn" data-toggle="modal" data-target="#ChatBot" > <img src="{{url_for('.static' , filename='ewm-images/chat.png')}}" alt="" width="50px"> </button>
+    </section>
+    
+    <!-- chat bot modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="ChatBot" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">If you have Questions ask Guto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                
+                <iframe
+                    allow="microphone;"
+                    width="350"
+                    height="430"
+                    src="https://console.dialogflow.com/api-client/demo/embedded/43440405-736d-4a91-b510-5b6af9787fd9">
+                </iframe>
+                
+            </div>
+            <div class="modal-footer">
+            
+            </div>
+        </div>
+        </div>
+    </div>
     
 
 

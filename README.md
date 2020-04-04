@@ -7,3 +7,12 @@ Give it a try : https://epedimicworldmap.herokuapp.com/
 
 API used: https://covid2019-api.herokuapp.com/
 
+
+# Built with
+
+flask : a microframework for Python.
+requests: we’ll use this library to make a request to external URLs.
+dialogflow: to interact with Dialogflow’s API.
+python-dotenv: will be used by Flask to load environment configurations files.
+pusher: to add realtime to our chatbot.
+Bootstrap : for the front-end.

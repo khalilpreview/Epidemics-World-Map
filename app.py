@@ -1,10 +1,11 @@
+import os
+import urllib
 import requests
 import json
 #from googletrans import Translator
-from flask import Flask , render_template , redirect , url_for , request
+from flask import Flask , render_template , redirect , url_for , request , make_response
 from flask_sqlalchemy import SQLAlchemy
 from forms import *
-
 
 
 # Flask app initialisation
@@ -30,18 +31,9 @@ def gen_home_page():
     title = 'Welcome to E-W-M'
     form = SelectCountryForm()
 
-    url_country_that_infected = 'https://covid2019-api.herokuapp.com/countries'
-
-    inf_country = requests.get(url_country_that_infected)
-    infected_country = inf_country.json()['countries']
-    infected_country_number = len(infected_country)
-
-    
-    
-
     # get the link + country nameafter submited
     if form.validate_on_submit():
-        country = '/' + form.select_country.data 
+        country = '/mapping/' + form.select_country.data 
         return redirect(country)
 
     return render_template('home.html' , form=form ,title=title)
@@ -49,7 +41,7 @@ def gen_home_page():
 
 
 # the home of map
-@app.route('/<country_name>', methods=['GET' , 'POST'])
+@app.route('/mapping/<country_name>', methods=['GET' , 'POST'])
 def home_page(country_name):
     title = 'E-W-M'
     country_info = CountriesBase.query.filter_by(country_names = country_name ).first()
@@ -101,13 +93,6 @@ def home_page(country_name):
                                           title=title)
 
 
-
-# registration  route and view
-@app.route('/register')
-def register_page():
-    title = 'Registration E-W-M'
-    return render_template('registration.html' , title=title)
-
 # login route and view
 @app.route('/login')
 def registeration_page():
@@ -119,6 +104,43 @@ def registeration_page():
 def dashboard_page():
     title = 'Dashboard E-W-M'
     return render_template('dashboard.html' , title=title)
+
+"""
+# registration  route and view
+@app.route('/webhook' , methods=['POST'])
+def webhook():
+    title = 'webhook'
+
+    if request.method == "POST":
+        req = request.get_json(silent=True , force=True)
+        res = processRequest(req)
+        res = json.dumps(res, indent=4)
+        r = make_response(res)
+        r.headers['Content-Type'] = 'application/json'
+        return r
+
+def processRequest(req):
+
+    # Get all the Query Parameter
+    query_response = req["queryResult"]
+    print(query_response)
+    text = query_response.get('queryText', None)
+    parameters = query_response.get('parameters', None)
+
+    res = get_data()
+
+    return res
+
+
+def get_data():
+
+    speech = ""
+
+    return {
+        "fulfillmentText": speech,
+    }
+
+"""
 
 
 
