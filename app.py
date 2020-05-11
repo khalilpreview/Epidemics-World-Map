@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 # create an object of translater class
 # google translator integrated
-#translator = Translator()
+# translator = Translator()
 
 # routes and views start here.
 # ...
